@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calatorii</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="flex justify-between items-center py-6">
+        <div class="flex items-center">
+            <div class="bg-teal-500 h-10 w-10 rounded-full flex items-center justify-center">
+                <!-- Placeholder for logo -->
+                ☕️
+            </div>
+            <h1 class="ml-3 text-3xl font-bold text-teal-600">Calatorii prin tara..</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="text-center py-12">
+            <h2 class="text-4xl font-bold text-gray-800 mb-3">Calatorii personale</h2>
+            <p class="text-teal-600 mb-6">Bun venit pe pagina mea! Sunt o călătoare entuziastă care împărtășește experiențele fascinante descoperite în călătoriile prin frumoasa noastră țară. Alătură-te și descoperă împreună locuri minunate și povești captivante! 🌍✨</p>
+            <p class="text-gray-600 mb-6">🙋🏻‍♀️ Newsletter și comunitate creată de Popescu Andreea</p>
+            <form action="/api/forms/subscribe" class="flex justify-center">
+                <input type="hidden" name="formId" value="5871346"/>
+                <input type="email" placeholder="Introdu adresa de email.." class="px-4 py-2 w-64 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" required>
+                <button type="button" onclick="window.location.href='http://localhost:63342/newsletter/src/main/resources/static/thank-you.html?_ijt=v3ds75en24bfamg28d04od4avr'" class="px-6 py-2 bg-teal-500 text-white font-semibold rounded-r-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50">Subscribe</button>
+
+            </form>
+        </section>
+
+        <section class="py-12">
+                <h3 class="text-2xl font-bold text-gray-800 mb-8">Postari</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white shadow-lg rounded-lg p-6">
+                        <h4 class="text-lg font-semibold mb-2"><v>Vizioneaza site-ul personal de calatorii</v></h4>
+                    <button onclick="window.location.href='file:///C:/Users/Andreea/Desktop/p2/index.html#'" class="text-teal-600 hover:text-teal-700 font-medium">Află mai mult</button>
+
+
+                </div>
+                <div class="bg-white shadow-lg rounded-lg p-6">
+                    <h4 class="text-lg font-semibold mb-2">Detalii despre creatoare..</h4>
+                    <button onclick="window.location.href='file:///C:/Users/Andreea/Desktop/p2/CV/CV.html.html'" class="text-teal-600 hover:text-teal-700 font-medium">Află mai mult</button>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-6 border-t border-gray-200 text-center">
+        <p class="text-sm text-gray-600 mb-2">Popescu Andreea 2024</p>
+        <nav>
+            <a href="#" class="text-teal-600 hover:text-teal-700 text-sm mx-2">Privacy Policy</a>|
+            <a href="#" class="text-teal-600 hover:text-teal-700 text-sm mx-2">Terms of Use</a>
+        </nav>
+    </footer>
+</div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = form.querySelector('input[type="email"]').value;
+            const formId = form.querySelector('input[name="formId"]').value;
+
+            const formData = {
+                email: email,
+                formId: formId
+            };
+
+            // Using fetch to send data
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/thank-you.html'; // Redirect on successful response
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    });
+
+</script>
+</body>
+</html>
